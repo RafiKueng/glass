@@ -1,7 +1,7 @@
-from __future__ import division
+from __future__ import division, absolute_import
 from itertools import izip
 from numpy import mean, zeros, argwhere
-from priors import include_prior, exclude_prior, \
+from .priors import include_prior, exclude_prior, \
                    def_priors, all_priors, inc_priors, exc_priors, acc_objpriors, acc_enspriors
 from glass.log import log as Log
 from glass.log import Status
@@ -11,10 +11,20 @@ from glass.scales import convert
 
 from glass.solvers.error import GlassSolverError
 
-from . import glcmds
-from . import funcs
-from . import priors
-from funcs import default_post_process
+try:
+    from . import glcmds
+    from . import funcs
+    from . import priors
+except ImportError:
+    print "import error"
+    from glass import glcmds
+    from glass import funcs
+    from glass import priors
+
+try: 
+    from funcs import default_post_process
+except ImportError:
+    from glass.funcs import default_post_process
 
 opts = env().basis_options
 if opts.has_key('solver') and opts['solver'] is None:
