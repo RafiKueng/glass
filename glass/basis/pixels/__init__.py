@@ -1,4 +1,5 @@
-from __future__ import division, absolute_import
+from __future__ import division
+
 from itertools import izip
 from numpy import mean, zeros, argwhere
 from .priors import include_prior, exclude_prior, \
@@ -17,14 +18,11 @@ try:
     from . import priors
 except ImportError:
     print "import error"
-    from glass import glcmds
-    from glass import funcs
-    from glass import priors
+    import glcmds
+    import funcs
+    import priors
 
-try: 
-    from funcs import default_post_process
-except ImportError:
-    from glass.funcs import default_post_process
+from funcs import default_post_process
 
 opts = env().basis_options
 if opts.has_key('solver') and opts['solver'] is None:
