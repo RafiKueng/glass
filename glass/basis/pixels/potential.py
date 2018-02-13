@@ -63,7 +63,7 @@ def poten_dx(r, a, R):
     return v / pi
 
 def XXpoten_dx(r, a):
-    from scipy import weave
+    import weave
     from numpy import empty_like
 
     if type(r) == type(complex(0,0)):
@@ -121,7 +121,7 @@ def poten_dy(r, a, R):
     return v / pi
 
 def XXpoten_dy(r, a):
-    from scipy import weave
+    import weave
     from numpy import empty_like
 
     if type(r) == type(complex(0,0)):
@@ -306,7 +306,7 @@ def maginv_new5(r, a, c, s):
 
 
 def grad(W,r0,r,a):
-    from scipy import weave
+    import weave
 
     if type(r) == type(complex(0,0)):
         assert 0, "Shouldn't use potential.grad() for none array-based positions."

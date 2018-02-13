@@ -338,7 +338,7 @@ def irrhistogram2d(R,C,rbin,binsize, weights=None):
 
     h = zeros(len(rbin))
 
-    from scipy import weave
+    import weave
     code="""
         int i;
         #ifdef WITH_OMP
